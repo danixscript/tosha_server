@@ -1,0 +1,31 @@
+const adminorders = require("../../../models/sql/adminorders");
+const usersorders = require("../../../models/userssql/orders");
+
+
+
+
+// this is logg in function
+const getNotActiveOrders = async (req, res, next) => {
+    try {
+        let notActiveOrder = await adminorders.selectOrdersJoinByIdWhere();
+        let userNotActiveOrders = await usersorders.getNotActiveOrders()
+      
+          res.json({
+            activeOrders: notActiveOrder[0],
+            userNotActiveOrders:userNotActiveOrders[0]
+          })
+
+          return;
+         
+     
+    } catch (e) {
+      console.log("i am the master ", e.message);
+      // req.session.err = e.details.map((item) => item.message);
+      res.json({
+        err: {msg:e.message,type:'bad'}
+      });
+    }
+  } 
+
+
+module.exports.getNotActiveOrders = getNotActiveOrders;
