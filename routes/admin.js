@@ -11,6 +11,7 @@ const allAdminOrders = require('../controller/userscontroller/getstats/getStatsO
 const bandUser = require('../controller/adminpermissions/users/bandUser');
 const unbandUser = require('../controller/adminpermissions/users/unbandUser');
 const firsUserAdmin = require('../controller/adminpermissions/firsUserAdmin');
+const dogHanoot = require('../controller/adminpermissions/acceptorder/dogHanoot');
 
 
 const login = require('../controller/register/login')
@@ -45,7 +46,9 @@ router.get('/getallstats',allAdminOrders.getStatsOfStore, function(req, res, nex
   
 });
 
-
+router.get('/getdohh',dogHanoot.dogHanoot, function(req, res, next) {
+  
+});
 
 
 module.exports = router;

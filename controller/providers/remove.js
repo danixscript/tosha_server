@@ -1,6 +1,6 @@
 const providerSQL = require("../../models/sql/providers");
 const jwt = require("../../auth/jwt");
-const productSQL = require("../../models/sql/productSource");
+const productSQL = require("../../models/sql/productsource");
 
 const localStorage = require("localStorage");
 const crypto = require("crypto");
