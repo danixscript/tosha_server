@@ -1,6 +1,6 @@
 const pool = require("./mysql2");
 const getAllProduct = () => {
-    return pool.execute(`SELECT * FROM toshproject.productsource `);
+    return pool.execute(`SELECT * FROM tosha.productsource `);
   };
 
 const selectProductSourceById = (id) => {

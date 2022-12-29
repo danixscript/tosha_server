@@ -2,7 +2,7 @@ const pool = require("../sql/mysql2");
 
 const insertNewOrdersUsersss = (userid, orderprice, date,useremail,active,ordertype,uptofiftin,usersee) => {
     return pool.execute(
-      `INSERT INTO toshproject.userorders 
+      `INSERT INTO tosha.userorders 
       (userid, orderprice, userorderdate,useremail,active,ordertype,uptofiftin,usersee) 
       VALUES 
       (?,?,STR_TO_DATE(?, "%m-%d-%Y %H:%i:%s"),?,?,?,?,?)`,
@@ -12,12 +12,12 @@ const insertNewOrdersUsersss = (userid, orderprice, date,useremail,active,ordert
 
 
     const getNotActiveOrders = () => {
-    return pool.execute(`  SELECT * FROM toshproject.userorders where active = 0 
+    return pool.execute(`  SELECT * FROM tosha.userorders where active = 0 
     `,[]);
   };
 
   const getNotActiveOrdersAndUpto = () => {
-    return pool.execute(`  SELECT * FROM toshproject.userorders where active = 0  AND uptofiftin = 1
+    return pool.execute(`  SELECT * FROM tosha.userorders where active = 0  AND uptofiftin = 1
     `,[]);
   };
 
@@ -26,7 +26,7 @@ const insertNewOrdersUsersss = (userid, orderprice, date,useremail,active,ordert
 
 
   const userCheckTheOrderSQL = (id) => {
-    return pool.execute(`  UPDATE toshproject.userorders SET usersee = 0 where id = ?
+    return pool.execute(`  UPDATE tosha.userorders SET usersee = 0 where id = ?
     `,[id]);
   };
 
@@ -36,15 +36,15 @@ const insertNewOrdersUsersss = (userid, orderprice, date,useremail,active,ordert
 
 
   const getAllUsersOrders = () => {
-    return pool.execute(`  SELECT * FROM toshproject.userorders order by  userorderdate DESC
+    return pool.execute(`  SELECT * FROM tosha.userorders order by  userorderdate DESC
     `,[]);
   };
   const getUserNotActiveOrderById = (id) => {
-    return pool.execute(`  SELECT * FROM toshproject.userorders where active = 0  AND userid = ?
+    return pool.execute(`  SELECT * FROM tosha.userorders where active = 0  AND userid = ?
     `,[id]);
   };
   const getOrderByOrderIdSQL = (id) => {
-    return pool.execute(`  SELECT * FROM toshproject.usersorderinfo   INNER JOIN  userorders   ON usersorderinfo.userorderid = userorders.id where  userorderid = ?
+    return pool.execute(`  SELECT * FROM tosha.usersorderinfo   INNER JOIN  userorders   ON usersorderinfo.userorderid = userorders.id where  userorderid = ?
     `,[id]);
   };
   const getOrderInfoJoin = (id) => {
@@ -56,7 +56,7 @@ const insertNewOrdersUsersss = (userid, orderprice, date,useremail,active,ordert
   };
 
   const getUserOrdersByUserId = (id) => {
-    return pool.execute(`  SELECT DATE_FORMAT(userorderdate, "%d/%m/%Y %h:%i %p") as date,id,userid,orderprice,ordertype,useremail,active,uptofiftin FROM toshproject.userorders 
+    return pool.execute(`  SELECT DATE_FORMAT(userorderdate, "%d/%m/%Y %h:%i %p") as date,id,userid,orderprice,ordertype,useremail,active,uptofiftin FROM tosha.userorders 
   
     
     where  userid = ?
@@ -68,14 +68,14 @@ const insertNewOrdersUsersss = (userid, orderprice, date,useremail,active,ordert
 
 
   const acceptUserOrder = (id) => {
-    return pool.execute(`UPDATE toshproject.userorders 
+    return pool.execute(`UPDATE tosha.userorders 
     SET uptofiftin = 0
     
     WHERE id = ?`,[id]);
   };
 
   const userPayForOrder = (id,userid) => {
-    return pool.execute(`UPDATE toshproject.userorders 
+    return pool.execute(`UPDATE tosha.userorders 
     SET active = 1
     
     WHERE id = ? AND userid =?`,[id,userid]);
@@ -84,7 +84,7 @@ const insertNewOrdersUsersss = (userid, orderprice, date,useremail,active,ordert
 
 
   const desableOrderSql = (id) => {
-    return pool.execute(`UPDATE toshproject.userorders 
+    return pool.execute(`UPDATE tosha.userorders 
     SET uptofiftin = null,usersee = 1
     
     WHERE id = ?`,[id]);

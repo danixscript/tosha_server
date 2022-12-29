@@ -59,7 +59,7 @@ try {
 
 } catch (e) {
   console.log("::::",e)
-  res.json({err:"error unvalid prop" +e, e,error:e}).status(500);
+  res.json({err:{msg:'error',type:'bad'}}).status(500);
 }
 };
 
