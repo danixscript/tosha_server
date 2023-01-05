@@ -1,6 +1,6 @@
 const pool = require("./mysql2");
 const getAllProduct = () => {
-    return pool.execute(`SELECT * FROM tosha.productsource `);
+    return pool.execute(`SELECT * FROM toshproject.productsource `);
   };
 
 const selectProductSourceById = (id) => {
@@ -30,48 +30,48 @@ const selectProductSourceById = (id) => {
     );
   };
   const selectProductsByProvider = (id) => {
-    return pool.execute(`SELECT * FROM tosha.productsource 
-    INNER JOIN tosha.providers 
-    ON tosha.productsource.providersid = providers.id
+    return pool.execute(`SELECT * FROM toshproject.productsource 
+    INNER JOIN toshproject.providers 
+    ON toshproject.productsource.providersid = providers.id
     where providersid = ? `, [id]);
   };
   const selectProductSourceJoinByProviderId = (id) => {
-    return pool.execute(`SELECT * FROM tosha.productsource 
-    INNER JOIN tosha.providers 
-    ON tosha.productsource.providersid = providers.id WHERE productsource.productid = ?`,[id]);
+    return pool.execute(`SELECT * FROM toshproject.productsource 
+    INNER JOIN toshproject.providers 
+    ON toshproject.productsource.providersid = providers.id WHERE productsource.productid = ?`,[id]);
   };
   const selectAllProductSourceJoinByProvider = () => {
-    return pool.execute(`SELECT * FROM tosha.productsource 
-    INNER JOIN tosha.providers 
-    ON tosha.productsource.providersid = providers.id `);
+    return pool.execute(`SELECT * FROM toshproject.productsource 
+    INNER JOIN toshproject.providers 
+    ON toshproject.productsource.providersid = providers.id `);
   };
 
   const deleteAllProductByProvider = (id) => {
-    return pool.execute(`DELETE  FROM tosha.productsource WHERE providersid = ?`,[id]);
+    return pool.execute(`DELETE  FROM toshproject.productsource WHERE providersid = ?`,[id]);
   };
   const removeProductSource = (id) => {
-    return pool.execute(`DELETE FROM tosha.productsource WHERE productid = ?`,[id]);
+    return pool.execute(`DELETE FROM toshproject.productsource WHERE productid = ?`,[id]);
   };
 
   // const selectProductLike = (text,text1,text2,id) => {
   //   return pool.execute(`
-  //   SELECT * FROM tosha.productsource 
-  //   INNER JOIN tosha.providers 
-  //   ON tosha.productsource.providersid = providers.id
-  //   WHERE tosha.productsource.productname Like CONCAT("%", ? , "%")
-  //   or tosha.providers.name Like CONCAT("%", ? , "%")
-  //   or tosha.providers.cat Like CONCAT("%", ? , "%")
+  //   SELECT * FROM toshproject.productsource 
+  //   INNER JOIN toshproject.providers 
+  //   ON toshproject.productsource.providersid = providers.id
+  //   WHERE toshproject.productsource.productname Like CONCAT("%", ? , "%")
+  //   or toshproject.providers.name Like CONCAT("%", ? , "%")
+  //   or toshproject.providers.cat Like CONCAT("%", ? , "%")
   //   AND providersid = ?
   //   `,[text,text1,text2,id]);
   // };
 
   const selectProductLike = (id,text) => {
-    return pool.execute(` SELECT * FROM tosha.productsource 
-    INNER JOIN tosha.providers 
-    ON tosha.productsource.providersid = providers.id
+    return pool.execute(` SELECT * FROM toshproject.productsource 
+    INNER JOIN toshproject.providers 
+    ON toshproject.productsource.providersid = providers.id
     WHERE
     providersid = ? AND 
-    tosha.productsource.productname Like CONCAT("%", ? , "%")
+    toshproject.productsource.productname Like CONCAT("%", ? , "%")
     `,[id,text]);
   };
 

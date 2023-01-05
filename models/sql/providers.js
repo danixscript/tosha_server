@@ -3,7 +3,7 @@ const pool = require("./mysql2");
 
   const insertProvider = (name,agentname,address,phone,email,zipcode,cat) => {
     return pool.execute(
-      `INSERT INTO tosha.providers 
+      `INSERT INTO toshproject.providers 
       (name,agentname,address,phone,email,zipcode,cat) 
       VALUES 
       (?,?,?,?,?,?,?)`,
@@ -12,16 +12,16 @@ const pool = require("./mysql2");
   };
   
   const selectProviderByName = (name) => {
-    return pool.execute(`SELECT * FROM tosha.providers WHERE name = ? `, [name]);
+    return pool.execute(`SELECT * FROM toshproject.providers WHERE name = ? `, [name]);
   };
   const selectAllProvider = () => {
-    return pool.execute(`SELECT * FROM tosha.providers  `, );
+    return pool.execute(`SELECT * FROM toshproject.providers  `, );
   };
 
 
   const editProviderSQl = (name ,agentname  , address, phone ,email,zipcode,cat,id ) => {
     return pool.execute(` 
-    UPDATE tosha.providers 
+    UPDATE toshproject.providers 
     SET name =  ?,agentname = ? , address= ?, phone = ? ,email=?,zipcode=?,cat=?
     WHERE id = ? `,[name ,agentname  , address, phone ,email,zipcode,cat,id] );
   };
@@ -39,7 +39,7 @@ const insertNewProduct = (name, providername, price) => {
   };
 
   const removeProviderById = (id) => {
-    return pool.execute(`DELETE  FROM tosha.providers WHERE id = ? `,[id] );
+    return pool.execute(`DELETE  FROM toshproject.providers WHERE id = ? `,[id] );
   };
 
 

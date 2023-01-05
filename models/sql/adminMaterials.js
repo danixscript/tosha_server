@@ -26,7 +26,7 @@ const pool = require("./mysql2");
   const updateQuantityMaterialTable = (amount,id) => {
     return pool.execute(
       `
-      UPDATE tosha.storematerials 
+      UPDATE toshproject.storematerials 
     SET quantity =  ?
     WHERE materialid = ?
       `,
@@ -39,7 +39,7 @@ const pool = require("./mysql2");
   const updateMinPlace = (min,id) => {
     return pool.execute(
       `
-      UPDATE tosha.storematerials 
+      UPDATE toshproject.storematerials 
     SET minimum =  ?
     WHERE materialid = ?
       `,
@@ -49,7 +49,7 @@ const pool = require("./mysql2");
   const updateQuantity = (min,id) => {
     return pool.execute(
       `
-      UPDATE tosha.storematerials 
+      UPDATE toshproject.storematerials 
     SET quantity =  ?
     WHERE materialid = ?
       `,
@@ -62,31 +62,31 @@ const pool = require("./mysql2");
   };
 
   const getExpensiveMaterial = () => {
-    return pool.execute(`SELECT * FROM tosha.storematerials order by - materialcoast `,);
+    return pool.execute(`SELECT * FROM toshproject.storematerials order by - materialcoast `,);
   };
 
   const getCheepMaterial = () => {
-    return pool.execute(`SELECT * FROM tosha.storematerials order by materialcoast  `,);
+    return pool.execute(`SELECT * FROM toshproject.storematerials order by materialcoast  `,);
   };
   const getAllMaterialsUnderQuantity = () => {
-    return pool.execute(`SELECT * FROM tosha.storematerials where quantity < minimum  `,);
+    return pool.execute(`SELECT * FROM toshproject.storematerials where quantity < minimum  `,);
   };
   const deleteoneMaterial = (id) => {
     return pool.execute(`DELETE  FROM storematerials WHERE materialid = ?  `,[id]);
   };
 
   const underMinimum = () => {
-    return pool.execute(`  SELECT * FROM tosha.storematerials where quantity <= 0 
+    return pool.execute(`  SELECT * FROM toshproject.storematerials where quantity <= 0 
     `,[]);
   };
   const almostDone = () => {
-    return pool.execute(`   SELECT * FROM tosha.storematerials where quantity <= minimum + 30;
+    return pool.execute(`   SELECT * FROM toshproject.storematerials where quantity <= minimum + 30;
 
     `,[]);
   };
   const selectMaterialLike = (text,text1,text2,text3) => {
     return pool.execute(`
-    SELECT * FROM tosha.storematerials 
+    SELECT * FROM toshproject.storematerials 
     
    WHERE materialname Like CONCAT("%", ? , "%")
     or place Like CONCAT("%", ? , "%")

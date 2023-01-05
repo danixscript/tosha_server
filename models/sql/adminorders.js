@@ -2,7 +2,7 @@ const pool = require("./mysql2");
 
 const insertNewOrders = (price, date, employeeid,active,name,providerid,providername) => {
     return pool.execute(
-      `INSERT INTO tosha.adminorder 
+      `INSERT INTO toshproject.adminorder 
       (totalprice, date, employeeid,activeorder,employeename,providerid,providername) 
       VALUES 
       (?,STR_TO_DATE(?, "%m-%d-%Y %H:%i:%s"),?,?,?,?,?)`,
@@ -19,12 +19,12 @@ const insertNewOrders = (price, date, employeeid,active,name,providerid,provider
   };
   const selectEmpolyeeOrders = () => {
     return pool.execute(` SELECT adminorderid,employeename,count(employeeid) as ordersnumber
-    FROM tosha.adminorder   group by employeename `,[]);
+    FROM toshproject.adminorder   group by employeename `,[]);
   };
 
   // זה ביחד ................................. 
   const selectDateTotalprice = () => {
-    return pool.execute(` SELECT DATE_FORMAT(date, "%d/%m/%Y %h:%i %p") as date,totalprice,name FROM tosha.adminorder 
+    return pool.execute(` SELECT DATE_FORMAT(date, "%d/%m/%Y %h:%i %p") as date,totalprice,name FROM toshproject.adminorder 
     INNER JOIN  providers
     ON adminorder.providerid = providers.id
     ; `,[]);
@@ -32,7 +32,7 @@ const insertNewOrders = (price, date, employeeid,active,name,providerid,provider
 
   
 
-    // SELECT DATE_FORMAT(date, "%d/%m/%Y %h:%i %p") as date,totalprice,name FROM tosha.adminorder 
+    // SELECT DATE_FORMAT(date, "%d/%m/%Y %h:%i %p") as date,totalprice,name FROM toshproject.adminorder 
     // INNER JOIN  providers
     // ON adminorder.providerid = providers.id group by date
     
@@ -54,7 +54,7 @@ const insertNewOrders = (price, date, employeeid,active,name,providerid,provider
   };
 
   const selectAllOrdersByProvider = (id) => {
-    return pool.execute(`SELECT * From tosha.adminorder  where providerid = ?`,[id]);
+    return pool.execute(`SELECT * From toshproject.adminorder  where providerid = ?`,[id]);
   };
 
   const deleteOrder = (id) => {
@@ -68,18 +68,18 @@ const insertNewOrders = (price, date, employeeid,active,name,providerid,provider
   };
 
   const selectOrderByDate = () => {
-    return pool.execute(`  SELECT * FROM tosha.adminorder order by  date DESC  
+    return pool.execute(`  SELECT * FROM toshproject.adminorder order by  date DESC  
     `,[]);
   };
   const getNotActiveOrders = () => {
-    return pool.execute(`  SELECT * FROM tosha.adminorder where activeorder = 0
+    return pool.execute(`  SELECT * FROM toshproject.adminorder where activeorder = 0
     `,[]);
   };
   const getExpensiveProducts = () => {
-    return pool.execute(`SELECT * FROM tosha.adminorder order by - totalprice `,);
+    return pool.execute(`SELECT * FROM toshproject.adminorder order by - totalprice `,);
   };
   const getCheepestProducts = () => {
-    return pool.execute(`SELECT * FROM tosha.adminorder order by  totalprice `,);
+    return pool.execute(`SELECT * FROM toshproject.adminorder order by  totalprice `,);
   };
 
   module.exports.selectOrderByDate = selectOrderByDate

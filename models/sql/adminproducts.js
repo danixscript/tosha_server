@@ -77,7 +77,7 @@ const insertNewProduct = (name, providername, price) => {
   const updateQuantityMyTable = (amount,id) => {
     return pool.execute(
       `
-      UPDATE tosha.myproducts 
+      UPDATE toshproject.myproducts 
     SET quantity =  ?
     WHERE id = ?
       `,
@@ -88,7 +88,7 @@ const insertNewProduct = (name, providername, price) => {
   const updatePrice = (price,id) => {
     return pool.execute(
       `
-      UPDATE tosha.myproducts 
+      UPDATE toshproject.myproducts 
     SET price =  ?
     WHERE id = ?
       `,
@@ -98,7 +98,7 @@ const insertNewProduct = (name, providername, price) => {
   const updateMinPlace = (min,id) => {
     return pool.execute(
       `
-      UPDATE tosha.myproducts 
+      UPDATE toshproject.myproducts 
     SET minimum =  ?
     WHERE id = ?
       `,
@@ -109,7 +109,7 @@ const insertNewProduct = (name, providername, price) => {
   const activeProductToDisplay = (id) => {
     return pool.execute(
       `
-      UPDATE tosha.myproducts 
+      UPDATE toshproject.myproducts 
     SET active =  1
     WHERE id = ?
       `,
@@ -120,7 +120,7 @@ const insertNewProduct = (name, providername, price) => {
   const removeProductFromDisplay = (id) => {
     return pool.execute(
       `
-      UPDATE tosha.myproducts 
+      UPDATE toshproject.myproducts 
     SET active =  0
     WHERE id = ?
       `,
@@ -133,19 +133,19 @@ const insertNewProduct = (name, providername, price) => {
   };
 
   const getExpensiveProducts = () => {
-    return pool.execute(`SELECT * FROM tosha.myproducts order by - price `,);
+    return pool.execute(`SELECT * FROM toshproject.myproducts order by - price `,);
   };
   const notActiveProducts = () => {
-    return pool.execute(`SELECT * FROM tosha.myproducts where active = 0 `,);
+    return pool.execute(`SELECT * FROM toshproject.myproducts where active = 0 `,);
   };
   const getCheepProducts = () => {
-    return pool.execute(`SELECT * FROM tosha.myproducts order by price  `,);
+    return pool.execute(`SELECT * FROM toshproject.myproducts order by price  `,);
   };
   const getFinishdProductsSQL = () => {
-    return pool.execute(`SELECT * FROM tosha.myproducts where quantity <= 0  `,);
+    return pool.execute(`SELECT * FROM toshproject.myproducts where quantity <= 0  `,);
   };
   const getAllProductudnderQuantity = () => {
-    return pool.execute(`SELECT * FROM tosha.myproducts where quantity <= minimum  `,);
+    return pool.execute(`SELECT * FROM toshproject.myproducts where quantity <= minimum  `,);
   };
   const deleteoneProduct = (id) => {
     return pool.execute(`DELETE  FROM myproducts WHERE id = ?  `,[id]);
@@ -156,7 +156,7 @@ const insertNewProduct = (name, providername, price) => {
   
   const selectProductLike = (text,text1,text2,text3) => {
     return pool.execute(`
-    SELECT * FROM tosha.myproducts 
+    SELECT * FROM toshproject.myproducts 
     
    WHERE itemname Like CONCAT("%", ? , "%")
     or place Like CONCAT("%", ? , "%")

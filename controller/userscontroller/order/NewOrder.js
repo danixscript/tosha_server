@@ -65,7 +65,8 @@ const newOrder = async (req, res, next) => {
             req.body.active,
             req.body.ordertype,
             req.body.peopleCount,
-            0
+            0,
+            req.body.text,
           );
         }
         flagthatmade = false
@@ -92,7 +93,7 @@ const newOrder = async (req, res, next) => {
       password: "12344",
       database: "toshproject",
       waitForConnections: true,
-      connectionLimit: 10,
+      connectionLimit: 10, 
       queueLimit: 0,
     });
 

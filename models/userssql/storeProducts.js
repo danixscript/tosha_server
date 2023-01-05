@@ -11,7 +11,7 @@ const pool = require("../sql/mysql2");
   
   const selectProductLike = (text,text1,text2,text3) => {
     return pool.execute(`
-    SELECT * FROM tosha.myproducts 
+    SELECT * FROM toshproject.myproducts 
     
    WHERE itemname Like CONCAT("%", ? , "%")
     or type Like CONCAT("%", ? , "%")

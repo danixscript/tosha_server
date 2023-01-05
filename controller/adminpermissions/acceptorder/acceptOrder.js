@@ -14,19 +14,13 @@ const acceptOrder = async (req, res, next) => {
 
 
       for (let i = 0; i < getOrderProduct[0].length; i++) {
-
         if (getOrderProduct[0][i].type == 'material') {
           let ifMaterialExist = await myMaterials.checkIfMaterialExist(getOrderProduct[0][i].productid, getOrderProduct[0][i].productname)
-
           if (ifMaterialExist[0].length > 0) {
             let amountQ = ifMaterialExist[0][0].quantity + getOrderProduct[0][0].quantity
             let updateCh = await myMaterials.updateQuantityMaterialTable(amountQ, ifMaterialExist[0][0].materialid)
-
-
           } else {
             await myMaterials.insertNewMaterialToMytable(
-
-
               getOrderProduct[0][i].productname,
               getOrderProduct[0][i].productimg,
               getOrderProduct[0][i].productid,
@@ -35,29 +29,16 @@ const acceptOrder = async (req, res, next) => {
              300,
              getOrderProduct[0][i].quantity,
               'לא עודכן',
-              getOrderProduct[0][i].providername,
-              
-
-
-
+             getOrderProduct[0][i].providername,
             )
           }
-
-
         } else if (getOrderProduct[0][i].type == 'product') {
           let ifProductInTable = await myProduct.checkIfProductExist(getOrderProduct[0][i].productid, getOrderProduct[0][i].productname);
-
-
-
           if (ifProductInTable[0].length > 0) {
             let amountQ = ifProductInTable[0][0].quantity + getOrderProduct[0][0].quantity
             let updateCh = await myProduct.updateQuantityMyTable(amountQ, ifProductInTable[0][0].id)
-
-
           } else {
             await myProduct.insertNewProductToMytable(
-
-
               getOrderProduct[0][i].productid,
               getOrderProduct[0][i].productname,
               getOrderProduct[0][i].providerid,
