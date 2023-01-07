@@ -5,7 +5,7 @@ var nodemailer = require('nodemailer');
 
 // this is create use rfunction  
 
-const ProvidersDohExel = async (req, res, next) => {
+const ProvidersDohExel = async (req, res, next) => { 
     
     try {
   let numint = parseInt(req.query.id)
@@ -17,7 +17,7 @@ if(allProviders[0].length > 0){
 
       const workbook = new excelJS.Workbook();  // Create a new workbook
   const worksheet = workbook.addWorksheet(`הזמנות מספק  ${allProviders[0][0].providername}` );
-  const path = "../dashboard/public/upload";
+  const path = "../tosha_server/public/upload";
 
 
         worksheet.columns = [

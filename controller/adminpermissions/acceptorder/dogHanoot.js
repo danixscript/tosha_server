@@ -16,8 +16,8 @@ if(allProviders[0].length > 0){
 
       const workbook = new excelJS.Workbook();  // Create a new workbook
   const worksheet = workbook.addWorksheet(`   כל ההזמנות מהחנות` );
-  const path = "../dashboard/public/upload";
-
+  const path = "../tosha_server/public/upload";
+ 
 
         worksheet.columns = [
             { header: "מספר הזמנה", key: "adminorderid", width: 10 }, 
