@@ -31,7 +31,7 @@ const getMostBuyingFromStore = () => {
          
   SELECT  *, 
   count( id ) as totalorders
-        FROM  userorders `,
+        FROM  userorders `,   
             []
           );
         };
@@ -52,7 +52,7 @@ SUM( orderprice ) as totalordersprice
       `
       SELECT  *, 
       COUNT( ordertype ) as orderssumintype
-            FROM  userorders 
+            FROM  userorders where active = 1
            group by ordertype  `,
       []
     );
