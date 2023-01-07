@@ -4,7 +4,7 @@ const pool = require("../sql/mysql2");
 
   
   const getAllMyProductsE = () => {
-    return pool.execute(`SELECT * FROM myproducts  `,);
+    return pool.execute(`SELECT * FROM myproducts where active = 1  `,);
   };
 
 

@@ -6,7 +6,7 @@ let pool = mysql.createPool({
   password: "12344",
   database: "toshproject",
   waitForConnections: true, 
-  connectionLimit: 10,
+  connectionLimit: 10,  
   queueLimit: 0,
 });
 

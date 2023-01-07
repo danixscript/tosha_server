@@ -21,7 +21,7 @@ const addProvider = async (req, res, next) => {
             return res.json({err:{msg:'provider is in use',type:'bad'}})
 
         }else{
-             ins = await providerInsert.insertProvider(data.name,data.agentname,data.address,data.phone,data.email,data.zipcode,data.cat);
+             ins = await providerInsert.insertProvider(data.name,data.agentname,data.address,data.phone,data.email,data.zipcode,data.cat,data.day);
 
         }
         data.id = ins[0].inserteid

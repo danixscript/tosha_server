@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/products',getAllProductsStore.getAllMyProductsToUser, function(req, res, next) {
  
-});
+}); 
 
 
 

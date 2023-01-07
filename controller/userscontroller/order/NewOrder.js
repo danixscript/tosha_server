@@ -1,12 +1,13 @@
 const neworder = require("../../../models/userssql/orders");
 const adminTable = require("../../../models/sql/adminproducts");
+const mysql = require('../../../models/sql/mysql2')
 
 // this is create use rfunction
 
 const newOrder = async (req, res, next) => {
   try {
     var d = new Date,
-      dformat = [d.getMonth() + 1,
+      dformat = [d.getMonth() + 1,  
         d.getDate(),
         d.getFullYear()
       ].join('-') + ' ' + [d.getHours(),
@@ -84,22 +85,22 @@ const newOrder = async (req, res, next) => {
             req.body.item.cardItems[i].producttype,
           ])
         } } }
+        // const mysql = require("mysql2");
+        // let pool = mysql.createPool({
+        //   host: "localhost",
+        //   user: "root",
+        //   password: "12344",
+        //   database: "toshproject",
+        //   waitForConnections: true,
+        //   connectionLimit: 10, 
+        //   queueLimit: 0,
+        // });
 
-
-    const mysql = require("mysql2");
-    let pool = mysql.createPool({
-      host: "localhost",
-      user: "root",
-      password: "12344",
-      database: "toshproject",
-      waitForConnections: true,
-      connectionLimit: 10, 
-      queueLimit: 0,
-    });
+   
 
     var sql = 'INSERT INTO toshproject.usersorderinfo(userorderid, userproductid, userproductquantity, userproductprice, userproductimg, userproductname, userproducttype) VALUES ? '
 
-    pool.query(sql, [array_p], function (err) {
+    mysql.query(sql, [array_p], function (err) {
       if (err) throw err;
       pool.end();
     });

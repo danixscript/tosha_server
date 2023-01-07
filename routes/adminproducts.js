@@ -11,6 +11,7 @@ const addMenualyProduct = require('../controller/myproducts/addMenualyProduct')
 const ActiveProduct = require('../controller/myproducts/ActiveProduct')
 const DeActiveProduct = require('../controller/myproducts/DeActiveProduct')
 const getFinishedProducts = require('../controller/myproducts/getFinishedProducts')
+const setQuantity = require('../controller/myproducts/setquantity')
 
 const getNotActiveProducts = require('../controller/myproducts/getNotActiveProducts')
 
@@ -34,6 +35,9 @@ router.post('/deactiveproduct',DeActiveProduct.DeActiveProduct, function(req, re
   
 });
 router.post('/setmin',setMinPlace.setMinMinPlace, function(req, res, next) {
+  
+});
+router.post('/setquantity',setQuantity.setQuantityController, function(req, res, next) {
   
 });
 router.post('/additem',addMenualyProduct.addProductToMyTable, function(req, res, next) {

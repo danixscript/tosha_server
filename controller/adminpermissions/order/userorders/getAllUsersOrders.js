@@ -8,7 +8,7 @@ const adminGetAllUsersOrders = async (req, res, next) => {
 try {
 
 
-  let allUsersOrders = await orders.getAllUsersOrders();
+  let allUsersOrders = await orders.getAllUsersOrders();  
   
     res.json({allUsersOrders:allUsersOrders[0]});
 

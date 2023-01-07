@@ -8,7 +8,7 @@ const getAllMyProductsToUser = async (req, res, next) => {
     try {
         
 
-        let allProducts = await usersStoreProducts.getAllMyProductsE()
+        let allProducts = await usersStoreProducts.getAllMyProductsE()   
         res.json({allProducts:allProducts[0],msg:'complete'})
      
 

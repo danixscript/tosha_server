@@ -1,13 +1,13 @@
 const pool = require("./mysql2");
 
 
-  const insertProvider = (name,agentname,address,phone,email,zipcode,cat) => {
+  const insertProvider = (name,agentname,address,phone,email,zipcode,cat,day) => {
     return pool.execute(
       `INSERT INTO toshproject.providers 
-      (name,agentname,address,phone,email,zipcode,cat) 
+      (name,agentname,address,phone,email,zipcode,cat,day) 
       VALUES 
-      (?,?,?,?,?,?,?)`,
-      [name,agentname,address,phone,email,zipcode,cat]
+      (?,?,?,?,?,?,?,?)`,
+      [name,agentname,address,phone,email,zipcode,cat,day]
     );
   };
   

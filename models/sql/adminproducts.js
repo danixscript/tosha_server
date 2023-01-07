@@ -95,6 +95,17 @@ const insertNewProduct = (name, providername, price) => {
       [price,id]
     );
   };
+
+  const updateQuantity = (price,id) => {
+    return pool.execute(
+      `
+      UPDATE toshproject.myproducts 
+    SET quantity =  ?
+    WHERE id = ?
+      `,
+      [price,id]
+    );
+  };
   const updateMinPlace = (min,id) => {
     return pool.execute(
       `
@@ -126,7 +137,7 @@ const insertNewProduct = (name, providername, price) => {
       `,
       [id]
     );
-  };
+  };  
   
   const getAllMyProductsE = () => {
     return pool.execute(`SELECT * FROM myproducts  `,);
@@ -187,6 +198,7 @@ const insertNewProduct = (name, providername, price) => {
   module.exports.getProductFromMyProductWhereNameAndType = getProductFromMyProductWhereNameAndType
   module.exports.removeProductFromDisplay = removeProductFromDisplay
   module.exports.getAllProductudnderQuantity = getAllProductudnderQuantity
+  module.exports.updateQuantity = updateQuantity
 
   
   
