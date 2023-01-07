@@ -19,11 +19,11 @@ const pool = require("./mysql2");
   };
 
 
-  const editProviderSQl = (name ,agentname  , address, phone ,email,zipcode,cat,id ) => {
+  const editProviderSQl = (name ,agentname  , address, phone ,email,zipcode,cat,day,id ) => {
     return pool.execute(` 
     UPDATE toshproject.providers 
-    SET name =  ?,agentname = ? , address= ?, phone = ? ,email=?,zipcode=?,cat=?
-    WHERE id = ? `,[name ,agentname  , address, phone ,email,zipcode,cat,id] );
+    SET name =  ?,agentname = ? , address= ?, phone = ? ,email=?,zipcode=?,cat=?,day=?
+    WHERE id = ? `,[name ,agentname  , address, phone ,email,zipcode,cat,day,id] );
   };
 
 

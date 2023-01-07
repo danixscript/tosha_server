@@ -15,7 +15,9 @@ const editProviderController = async (req, res, next) => {
          req.body.email,
          req.body.zipcode,
          req.body.cat,
+         req.body.day,
          req.body.id 
+         
 
     )
 
