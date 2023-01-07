@@ -105,7 +105,7 @@ const newOrder = async (req, res, next) => {
       pool.end();
     });
 
-    // await neworder.insertNewProductOrders2(ct);
+    // await neworder.insertNewProductOrders2(ct); 
 
 
     res.json({

@@ -7,7 +7,7 @@ const localStorage = require("localStorage");
 // this is logg in function
 const getAllUsers = async (req, res, next) => {
     try {
-        let getAllUsers = await admin.getAllUsersSQL();
+        let getAllUsers = await admin.getAllUsersSQL(); 
       
           res.json({
             allUsers: getAllUsers[0],
