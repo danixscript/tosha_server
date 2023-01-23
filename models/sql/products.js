@@ -27,13 +27,9 @@ const selectProductSourceById = (id) => {
     ON productssource.providersid = providers.id `);
   };
 
-  module.exports.selectProductSourceById =selectProductSourceById
-
-  module.exports.selectProductSourceByNameAndProvider =selectProductSourceByNameAndProvider
-  
-  module.exports.selectAllProductSource =selectAllProductSource
-
-  module.exports.insertNewProduct =insertNewProduct
-  module.exports.selectAllProductSourceJoin =selectAllProductSourceJoin
-
-  module.exports.getAllProduct = getAllProduct
+  module.exports.selectProductSourceById =selectProductSourceById;
+  module.exports.selectProductSourceByNameAndProvider =selectProductSourceByNameAndProvider;
+  module.exports.selectAllProductSource =selectAllProductSource;
+  module.exports.insertNewProduct =insertNewProduct;
+  module.exports.selectAllProductSourceJoin =selectAllProductSourceJoin;
+  module.exports.getAllProduct = getAllProduct;
