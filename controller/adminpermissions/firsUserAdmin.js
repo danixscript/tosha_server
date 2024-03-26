@@ -2,8 +2,8 @@ const admin = require("../../models/sql/admin");
 const authbcrypt = require("../../auth/bcrypt");
 
 
-
-// this is logg in function
+   
+// this is logg in functionn
 const firsUserAdmin = async (req, res, next) => {
     try {
         let getAllUsers = await admin.selectAllEmployees();

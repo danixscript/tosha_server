@@ -1,5 +1,5 @@
 const pool = require("./mysql2");
-
+  
 
 const insertNewEmployee = (name, password, date, phone,permissions) => {
     return pool.execute(
